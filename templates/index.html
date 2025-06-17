@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card">
+        <h2>Список материалов</h2>
+        <div class="action-buttons" style="padding-bottom: 1rem;">
+            <a href="{{ url_for('add_material') }}" class="btn">Добавить материал</a>
+            <a href="{{ url_for('calculate_product') }}" class="btn">Расчет продукции</a>
+        </div>
+        <div class="cards-container">
+            {% for material in materials %}
+            <div class="material-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="material-info">
+                        <div class="material-header">
+                            <strong>{{ material.type_name }}|</strong> {{ material.name }}
+                        </div>
+                        <div class="material-stock">
+                            <p>Минимально количество: {{ material.min_stock_quantity }}</p>
+                            <p>Количество на складе: {{ material.stock_quantity }}</p>
+                        </div>
+                        <div class="material-price">
+                           <p>Цена: {{ material.unit_price }} ₽/ <span>Единица измерения: {{ material.unit_of_measure }}</span> </p>
+                        </div>
+                    </div>
+                    
+                    <div class="order-cost">
+                      <p>Стоимость партии: {{ material.min_order_cost }} ₽</p> 
+                    </div>
+                </div>
+
+                <div class="material-actions">
+                    <a href="{{ url_for('edit_material', material_id=material.id) }}">Редактировать</a>
+                    <a href="{{ url_for('material_suppliers', material_id=material.id) }}">Поставщики</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+
+    </div>
+{% endblock %}

@@ -1,0 +1,1 @@
+DATABASE = "basedata.sqlite3"
