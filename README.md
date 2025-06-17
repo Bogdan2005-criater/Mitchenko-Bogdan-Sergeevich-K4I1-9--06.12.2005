@@ -31,7 +31,7 @@
 
 1. Склонируйте репозиторий:
 ```bash
-git clone 
+git clone https://github.com/Bogdan2005-criater/Mitchenko-Bogdan-Sergeevich-K4I1-9--06.12.2005.git
 ```
 
 2. Установите зависимости:
